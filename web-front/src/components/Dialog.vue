@@ -1,4 +1,3 @@
-<!-- src/components/ChatPanel.vue -->
 <template>
   <div class="chat-panel">
     <!-- 消息区域 -->
@@ -21,7 +20,7 @@
         placeholder="请输入消息..."
         rows="2"
       ></textarea>
-      <button @click="sendMessage" :disabled="!inputText.trim()">发送</button>
+      <button @click="sendMessage" :disabled="!inputText.trim() || props.loading"></button>
     </div>
   </div>
 </template>
@@ -36,6 +35,7 @@ interface Message {
 
 const props = defineProps<{
   messages: Message[]
+  loading?: boolean
 }>()
 
 const emit = defineEmits<{
